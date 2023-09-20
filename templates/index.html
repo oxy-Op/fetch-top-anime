@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+  <title>Fetch Top Anime</title>
+  <link type="image/x-icon" href="/static/images/erenyearger.jpg" rel="icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script type="module" src="/static/src/main.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white ps-5" href="#">
+        <img src="/static/images/erenyearger.jpg" width="40px" height="40px"
+          style="object-fit: cover; border-radius: 50%;" alt="logo">
+      </a>
+      <button class="navbar-toggler" style="background-color: rgb(234, 231, 231);" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-5 text-white bg-secondary">
+          <li class="nav-item p-2 dropdown" style="background-color: cornflowerblue;">
+            <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#">Anime</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item disabled" href="#">Top Anime</a></li>
+              <li><a class="dropdown-item active" href="#">Top Airing</a></li>
+              <li><a class="dropdown-item disabled" href="#">Most Popular</a></li>
+            </ul>
+          </li>
+          <li class="nav-item  p-2">
+            <a class="nav-link disabled " href="#">Manga</a>
+          </li>
+          <li class="nav-item  p-2">
+            <a class="nav-link disabled " href="#">Characters</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-3" style="padding-bottom: 100px;">
+    <div class="container-fluid">
+      <div id="grid-view" class="d-flex w-100 invisible">
+        <button id="grid-switch" class="btn btn-secondary preloader ms-auto">
+          <span class="badge" id="switcher">G</span>
+        </button>
+      </div>
+      <div style="max-width: 30px; margin: 0 auto;">
+        <a id="hideCarousel" href="#">
+          <img src="/static/images/hide.png" alt="show" width="20px">
+        </a>
+      </div>
+      <div id="demo" class="carousel slide collapse show" style="max-width: 600px; margin: 0 auto;"
+        data-bs-ride="carousel">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+        <!-- The slideshow/carousel -->
+        <div id="carousel-hide" class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/static/images/erenyearger.jpg" width="100px" height="200px" style="object-fit: cover;"
+              alt="Los Angeles" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="/static/images/erenyearger.jpg" width="100px" height="200px" style="object-fit: cover;"
+              alt="Chicago" class="d-block w-100">
+          </div>
+          <div class="carousel-item">
+            <img src="/static/images/erenyearger.jpg" width="100px" height="200px" style="object-fit: cover;"
+              alt="New York" class="d-block w-100">
+          </div>
+        </div>
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <h1 class="text-light row justify-content-center m-5">
+        Get information about top airing anime
+      </h1>
+      <h3 id="warner" class="text-light row justify-content-center m-3"></h3>
+    </div>
+    <div class="container-md mt-3" id="information">
+    </div>
+
+    <div id="showloading" class="preloader">
+
+    </div>
+    <div class="row justify-content-center m-3">
+      <div class="col-md-6 text-center ">
+        <div class="top_anime_input">
+          <label class="text-light m-3" for="topn">How many items do you want to fetch?</label>
+          <br>
+          <input type="number" value="0" min="2" max="50" id="topn" required>
+          <br />
+        </div>
+        <button id="loader" style="display: none;" class="btn btn-primary m-3">
+          Load Anime list
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
