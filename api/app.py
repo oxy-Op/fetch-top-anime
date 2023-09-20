@@ -23,7 +23,7 @@ def config(key):
 
 @app.route("/")
 def index():
-    return "hello world"
+    return render_template("index.html")
 
 
 @app.route("/demo")
