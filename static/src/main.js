@@ -70,7 +70,7 @@ function loadData(n, callback) {
 
   xhr = $.ajax({
     type: 'GET',
-    url: `${serverUrl}/fetch/${n}`,
+    url: `${serverUrl}/fetch/0/${n}`,
     success: function (data) {
       callback(data);
     },
@@ -182,7 +182,7 @@ function displayWarning(element, text, empty = false) {
 }
 
 function carouselInitialize() {
-  $.get(`${serverUrl}/fetch/3`, function (data) {
+  $.get(`${serverUrl}/fetch/1/3`, function (data) {
     $.each($('.carousel-item img'), function (index, value) {
       const image = data['rankings'][index].image
       $(value).attr('src', image)

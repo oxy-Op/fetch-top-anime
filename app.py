@@ -97,7 +97,7 @@ def demo():
     return jsonify(top_items)
 
 
-def fetch_anime_image(anime_name):
+def fetch_anime_image(anime_name, trailer=False):
     base_url = config("jikanmoe")
     url = f"{base_url}/anime?q={anime_name}&limit=1"
     try:
@@ -107,9 +107,9 @@ def fetch_anime_image(anime_name):
             if data:
                 trailer_image_url = data[0]["trailer"]["images"]["maximum_image_url"]
                 image_url = data[0]["images"]["jpg"]["large_image_url"]
-                if trailer_image_url:
+                if trailer:
                     return trailer_image_url
-                elif image_url:
+                elif trailer == False:
                     return image_url
                 else:
                     print("could not find image")
@@ -121,8 +121,8 @@ def fetch_anime_image(anime_name):
         print("An error occurred:", str(e))
 
 
-@app.route("/fetch/<int:n>", methods=["GET"])
-def fetch(n: int):
+@app.route("/fetch/<int:t>/<int:n>", methods=["GET"])
+def fetch(t: int, n: int):
     if not n:
         return jsonify({"status": "failed"})
 
@@ -167,7 +167,10 @@ def fetch(n: int):
                 item_data["score"] = score_span.text.strip()
 
                 anime_name = h3.text.strip()
-                item_data["image"] = fetch_anime_image(anime_name)
+                if t == 0:
+                    item_data["image"] = fetch_anime_image(anime_name)
+                elif t == 1:
+                    item_data["image"] = fetch_anime_image(anime_name, True)
 
                 # Append the item data to the list
                 top_items["rankings"].append(item_data)
